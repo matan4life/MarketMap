@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Db";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@functions  {
+    string rgba(Color c)
+    {
+        return $"rgba({c.R}, {c.G}, {c.B}, {c.A})";
+    }
+}
+
+<h2>Database debug</h2>
+
+@if (ViewData["categories"] == null)
+{
+    <p>ViewData["categories"] is null.</p>
+}
+else if ((ViewData["categories"] as List<Category>).Count == 0)
+{
+    <p>There's no categories in database.</p>
+}
+else
+{
+    <h3>Categories:</h3>
+    foreach (Category c in (ViewData["categories"] as List<Category>))
+    {
+        <p>
+            <span>@c.Name:&nbsp;</span>
+            <span class="label" style="background: @rgba(c.Color);">@c.Color.Name</span>
+        </p>
+    }
+}

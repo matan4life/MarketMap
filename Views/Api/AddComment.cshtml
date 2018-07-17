@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "AddComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddComment</h2>
+<h3>Outlet:</h3>
+<form method="post" asp-controller="api" asp-action="addoutlet">
+    <label for="rating">Rating mark:</label>
+    <select name=" rating" class="form-control">
+        <option value="5"> 5 </option>
+        <option value="4"> 4 </option>
+        <option value="3"> 3 </option>
+        <option value="2"> 2 </option>
+        <option value="1"> 1 </option>
+    </select>
+    <div class="form-group">
+        <label for="address">Text:</label>
+        <textarea class="form-control" type="text" name="text" autocomplete="off" rows="5"></textarea>
+    </div>
+    <input type="hidden" id="vertices" name="vertices" />
+    <button type="submit" class="btn btn-success" style="margin-top:15px;">
+        Send
+    </button>
+    <button type="submit" class="btn btn-danger" style="margin-top:15px;">
+        Cancel
+    </button>
+</form>

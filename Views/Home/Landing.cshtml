@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MarketMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/landing.css")">
+</head>
+<body>
+    <header class="nav">
+        <div class="nav__inner">
+            <div class="box outline">
+                <span>
+                    <i class="fas fa-map-marker-alt"></i>&nbsp;MarketMap
+                </span>
+            </div>
+            
+        </div>
+</header>
+    <section>
+        <div class="mb-4 text-justify transformable">
+            MarketMap is an innovative application which provides the best unique solution in the sphere of market and outlet navigation. Precise display of all trading areas, featuring all the buildings, will allow to find the right shop for sure, spending minimum amount of time.
+        </div>
+        @* <div><hr></div> *@
+        <div class="mb-4">
+            <img src="~/images/landing2.png" class="rounded">
+        </div>
+        <div class="mb-4 text-justify transformable">
+            MarketMap will help people who want to facilitate their local shopping trips and tourists who do not know the city at all.
+        </div>
+        <div class="mb-4 text-justify transformable">
+            The application provides an authentication subsystem, so users are able to post their comments about retail outlets, thereby helping others to choose a reliable shopping place, furthermore supporting shop owners to meet users’ requirements.
+        </div>
+        <div class="text-left">
+            <ul class="list-unstyled text-justify">
+                <li class="mb-4 transformable">
+                    <i class="fas fa-check"></i>&nbsp;
+                    Displaying market areas by using color areas on the map.
+                </li>
+                <li class="mb-4 transformable">
+                    <i class="fas fa-check"></i>&nbsp;
+                    Searching outlets by different categories (name, product categories, etc.).
+                </li>
+                <li class="mb-4 transformable">
+                    <i class="fas fa-check"></i>&nbsp;
+                    Review subsystem, which provides an opportunity to leave feedback about the product and the outlet.
+                </li>
+                <li class="transformable">
+                    <i class="fas fa-check"></i>&nbsp;
+                    Selecting a list of the nearest shops.
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer class="d-flex justify-content-center">
+        <div>
+            <span>
+                Download fully-functional <i class="fas fa-mobile"></i>
+                <a href="https://play.google.com/store" target="_blank">android application</a>
+                <br><br>or<br><br>visit out stylish <i class="far fa-map"></i> <a href="@Url.Action("Index", "Home")">website</a>
+            </span>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="@Url.Content("~/js/jquery.visible.min.js")"></script>
+    <script src="@Url.Content("~/js/landing.js")"></script>
+</body>
+</html>

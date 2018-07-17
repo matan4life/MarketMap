@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+@functions {
+    public string color(Color c)
+    {
+        return $"rgba({c.R},{c.G},{c.B},{c.A})";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link rel="stylesheet" 
+          href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/api-index.css")" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Market Map</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Api" asp-action="Index">Navigate Map</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Info
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
+                </li>
+                @if (@Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+                {
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Api
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Api" asp-action="Index">Index</a></li>
+                            <li><a asp-controller="Api" asp-action="Search">Search</a></li>
+                            <li><a asp-controller="Api" asp-action="Filter">Filter</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Categories
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Api" asp-action="AddCategory">Add category</a></li>
+                            <li><a asp-controller="Api" asp-action="ManageCategories">Manage categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Outlets
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Api" asp-action="AddOutlet">Add outlet</a></li>
+                            <li><a asp-controller="Api" asp-action="ManageOutlets">Manage Outlets</a></li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </nav>
+    <main>
+        <div id="info-panel">
+            <div id="info-content">
+                <input name="search-place" type="text" class="form-control" placeholder="Start searching a place .." />
+                <ul class="fa-ul">
+                    <li>
+                        <i class="fas fa-check fa-li"></i>
+                        <span id="category-all" class="label" style="color: black;border:2px solid black;">All</span>
+                    </li>
+                    @foreach (Category c in (ViewData["categories"] as List<Category>))
+                    {
+                        <li>
+                            <i class="fas fa-check fa-li"></i>
+                            <span class="label" style="background: @color(c.Color)">@c.Name</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div id="trigger">
+                <i class="fas fa-angle-left"></i>
+            </div>
+        </div>
+        <div id="google-map"></div>
+    </main>
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.js")"></script>
+    <script src="@Url.Content("~/js/api-index.js")"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR1JeF9C-70o3QXmqG1HRLgbjZdjb6NPs&language=en&libraries=drawing,places&callback=initMap"></script>
+</body>
+</html>

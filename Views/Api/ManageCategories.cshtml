@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Categories</h2>
+
+<form id="form" method="post" asp-controller="api" asp-action="getcategorylist" class="form-group">
+    <label for="category">Enter category name:</label>
+    <input type="text" autocomplete="off" class="form-control" id="category" name="category" />
+</form>
+<p id="query-result-text"></p>
+<div id="query-result">
+    <table class="table table-responsive">
+        <tbody></tbody>
+    </table>
+</div>
+<a class="btn btn-link" role="button" id="AddCategory">Add categories</a>
+
+@section Scripts{
+    <script src="@Url.Content("~/js/manage-categories.js")"></script>
+}

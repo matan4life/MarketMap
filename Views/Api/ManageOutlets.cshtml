@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "ManageOutlets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using MarketMap.Models
+
+<h2>Manage Outlets</h2>
+
+@functions{
+
+    public string rgba(Color c)
+    {
+        return $"rgba({c.R},{c.G},{c.B},{c.A})";
+    }
+
+    public string modal(int i)
+    {
+        return $"modal{i}";
+
+    }
+}
+    
+
+<table class="table">
+    <thead>
+        @if (true == (bool)ViewData["isman"])
+        {
+            <tr class="row">
+                <td class="col-md-1">Id</td>
+                <td class="col-md-2">Name</td>
+                <td class="col-md-2">Address</td>
+                <td class="col-md-2">Rating</td>
+                <td class="col-md-4">Categories</td>
+                <td class="col-md-1"></td>
+            </tr>
+        }
+        else
+        {
+            <tr class="row">
+                <td class="col-md-2">Id</td>
+                <td class="col-md-2">Name</td>
+                <td class="col-md-2">Address</td>
+                <td class="col-md-2">Rating</td>
+                <td class="col-md-4">Categories</td>
+            </tr>
+        }
+    </thead>
+    <tbody>
+        @foreach (Outlet o in (ViewData["outlets"] as List<Outlet>))
+        {
+            <tr class="row" data-outletid="@o.Id">
+                <td class="col-md-1">@o.Id</td>
+                <td class="col-md-2">
+                    <a href="#">@o.Name</a>
+                </td>
+                <td class="col-md-2">@o.Address</td>
+                <td class="col-md-2">
+                    <i class="fas fa-star" style="color:#ffea00;"></i>&nbsp;@o.Rating
+                </td>
+                <td class="col-md-4">
+                    @foreach (OutletCategory oc in o.OutletCategories)
+                    {
+                        <span class="label" style="background: @rgba(oc.Category.Color)">@oc.Category.Name</span>
+                    }
+                </td>
+                @if (true == (bool)ViewData["isman"])
+                {
+                    <td class="col-md-1">
+                        <button class="btn btn-xs btn-default pull-right" data-toggle="modal" data-target="#@modal(o.Id)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@foreach (Outlet o in (ViewData["outlets"] as List<Outlet>))
+{
+    <div class="modal fade" id="@modal(o.Id)" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Do you want to remove outlet [id: @o.Id] @o.Name?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="remove-outlet btn btn-danger pull-left" data-dismiss="modal" data-outletid="@o.Id">Remove</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/js/manage-outlets.js")"></script>
+}

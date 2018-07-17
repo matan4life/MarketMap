@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "CreateCategory";
+}
+
+<h2>Create Category</h2>
+<form id="form" method="post" asp-controller="api" asp-action="AddCategory" class="form-group">
+    <label for="category">Enter category name:</label>
+    <input type="text" autocomplete="off" class="form-control" id="category" name="category" />
+    <label for="color">Select an appropriate color for new category</label>
+    <input type="color" autocomplete="off" class="form-control" id="color" name="color" />
+</form>
+

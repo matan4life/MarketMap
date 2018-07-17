@@ -1,0 +1,109 @@
+﻿* {
+    font-family: "Trebuchet MS", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+}
+
+section,
+footer {
+    font-size: 1.75rem;
+}
+
+section > div,
+footer > div {
+    width: 50%;
+    display: inline-block;
+}
+
+footer {
+    padding: 50px 0;
+    background: rgb(0, 204, 204);
+    color: white;
+}
+
+a {
+    color: rgb(204, 102, 153);
+}
+
+a:hover {
+    color: rgb(204, 102, 153);
+    text-decoration: underline;
+}
+
+footer span {
+    line-height: 1.75rem;
+}
+
+section {
+    padding: 75px 0;
+    text-align: center;
+}
+
+section img {
+    width: 100%;
+}
+
+.nav {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 105px;
+    background-image: url("../images/landing1.png");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    /*text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0px 1px 0 #000, 0px -1px 0 #000, -1px 0px 0 #000, 1px 0px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0px 2px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000, 2px 0px 0 #000, 1px 2px 0 #000, -1px 2px 0 #000, 1px -2px 0 #000, -1px -2px 0 #000, 2px 1px 0 #000, -2px 1px 0 #000, 2px -1px 0 #000, -2px -1px 0 #000;*/
+}
+
+.nav .nav__inner {
+    z-index: 1;
+}
+
+.nav span {
+    color: #efefef;
+    font-size: 5vw;
+}
+
+.nav:before {
+    content: "";
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background 400ms;
+}
+
+.nav.n-fade:before {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.transformable {
+    transition: all 1.5s ease;
+}
+
+.transformable.t-hidden {
+    opacity: 0;
+    transform: skew(30deg,30deg);
+}
+
+.box {
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.outline {
+    background-color: black;
+    padding: 0.75rem 1.5rem;
+}
